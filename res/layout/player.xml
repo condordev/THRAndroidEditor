@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="#4a4a4a"> 
+    
+    <!-- Player Header -->
+    <LinearLayout 
+        android:id="@+id/player_header_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="60dip"
+        android:background="@layout/bg_player_header"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+        
+        <!-- Song Title -->
+        <TextView 
+            android:id="@+id/songTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#04b3d2"
+            android:textSize="16dp"
+            android:paddingLeft="10dp"
+            android:textStyle="bold"
+            android:text="no selection"
+            android:layout_marginTop="10dp"/>"
+        
+        <!-- Playlist button -->
+        <ImageButton 
+            android:id="@+id/btnPlaylist"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/btn_playlist"
+            android:background="@null"/>
+        
+        <Space
+        android:layout_width="3dp"
+        android:layout_height="fill_parent"/>
+        
+        <!-- EQ button -->
+        <ImageButton
+            android:id="@+id/btnEQ"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.16"
+            android:background="@null"
+            android:src="@drawable/btn_eq" />        
+        
+    </LinearLayout>
+    
+    <LinearLayout
+	   android:id="@+id/player_function"            
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:background="@layout/bg_player_header"
+       android:layout_below="@id/player_header_bg"
+       android:paddingLeft="5dp"
+       android:paddingRight="5dp" >
+       
+        <!-- Repeat Button -->
+        <ImageButton 
+            android:id="@+id/btnRepeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_repeat"
+            android:layout_marginRight="5dp"
+            android:background="@null"/>
+
+        
+        <ToggleButton
+            android:id="@+id/btnAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="AB"
+        	android:textOff="AB"
+            android:text="AB" />        
+        
+        <!-- Shuffle Button        
+         <ImageButton 
+            android:id="@+id/btnShuffle" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_shuffle"
+            android:layout_marginLeft="5dp"
+            android:background="@null"/> -->           			            		        
+	</LinearLayout>	
+	
+    <LinearLayout
+	   android:id="@+id/player_link"            
+       android:layout_width="fill_parent"
+       android:layout_height="50dip"
+       android:background="@layout/bg_player_header"
+       android:layout_below="@id/player_function"
+       android:paddingLeft="5dp"
+       android:paddingRight="5dp" >
+       <ImageButton
+           android:id="@+id/btnLinkPatchOne"
+           android:layout_width="wrap_content"
+           android:layout_height="fill_parent"
+           android:background="@null"
+           android:src="@drawable/btn_link" />	
+           
+       <TextView
+           android:id="@+id/linkedPatchNameOne"
+           android:layout_width="150dp"
+           android:layout_height="match_parent"
+           android:layout_weight="0.92"
+           android:text="no patch"
+           android:textSize="20sp" />
+       
+       <View
+        	android:layout_width="0dp"
+        	android:layout_height="0dp"
+        	android:layout_weight="1"/>
+       
+       <ImageButton
+           android:id="@+id/btnLinkPatchTwo"
+           android:layout_width="wrap_content"
+           android:layout_height="fill_parent"
+           android:background="@null"
+           android:src="@drawable/btn_link" />	
+           
+       <TextView
+           android:id="@+id/linkedPatchNameTwo"
+           android:layout_width="150dp"
+           android:layout_height="match_parent"
+           android:layout_weight="0.92"
+           android:text="no patch"
+           android:textSize="20sp" />
+       
+       <View
+        	android:layout_width="0dp"
+        	android:layout_height="0dp"
+        	android:layout_weight="1"/>       
+       			            		        
+	</LinearLayout>	
+
+    
+    <!-- Song Thumbnail Image 
+    <LinearLayout 
+        android:id="@+id/songThumbnail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:layout_below="@id/player_header_bg">
+    	<ImageView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/adele"/>    
+    </LinearLayout>
+    -->
+
+	<FrameLayout
+	    android:id="@+id/fragment_eq_container"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/player_link"
+	    android:orientation="vertical" >
+        
+	   <LinearLayout
+		   android:id="@+id/soundControl"            
+	       android:layout_width="fill_parent"
+	       android:layout_height="wrap_content"
+
+	       android:gravity="center_horizontal"
+	       android:paddingTop="30dp"
+	       android:orientation="horizontal" >
+
+	       <de.sgrad.yamahathreditor.KnobView
+	           android:id="@+id/knobVolume"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_weight="0.3" />
+
+	       <de.sgrad.yamahathreditor.KnobView
+	           android:id="@+id/knobBassBoost"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_weight="0.3" />
+
+	       <de.sgrad.yamahathreditor.KnobView
+	           android:id="@+id/knobBalance"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_weight="0.3" />
+       
+	   </LinearLayout>
+
+	</FrameLayout>
+    
+    <!-- Player Footer -->
+    <LinearLayout 
+        android:id="@+id/player_footer_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@layout/bg_player_footer"
+        android:gravity="center">
+    	
+        <!-- Player Buttons -->
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@layout/rounded_corner"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+            <!-- Previous Button -->
+            <ImageButton
+                android:id="@+id/btnPrevious" 
+                android:src="@drawable/btn_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+            <!-- Backward Button -->
+            <ImageButton 
+                android:id="@+id/btnBackward"
+                android:src="@drawable/btn_backward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+            <!-- Play Button -->
+            <ImageButton 
+                android:id="@+id/btnPlay"
+                android:src="@drawable/btn_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+            <!-- Forward Button -->
+            <ImageButton 
+                android:id="@+id/btnForward"
+                android:src="@drawable/btn_forward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+            <!-- Next Button -->
+            <ImageButton 
+                android:id="@+id/btnNext"
+                android:src="@drawable/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"/>
+        </LinearLayout>
+    </LinearLayout>
+    
+    <!-- Progress Bar/Seek bar -->
+    <SeekBar
+        	android:id="@+id/songProgressBar"
+	         android:layout_width="fill_parent"
+	         android:layout_height="wrap_content"
+	         android:layout_marginRight="20dp" 
+	         android:layout_marginLeft="20dp"
+	         android:layout_marginBottom="20dp"
+	    	 android:layout_above="@id/player_footer_bg"
+	    	 android:thumb="@drawable/seek_handler"
+	    	 android:progressDrawable="@drawable/seekbar_progress"
+	    	 android:paddingLeft="6dp"
+	    	 android:paddingRight="6dp"/>
+    
+    <!-- Timer Display -->
+    <LinearLayout 
+        android:id="@+id/timerDisplay"
+        android:layout_above="@id/songProgressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp">
+        <!-- Current Duration Label -->
+        <TextView 
+            android:id="@+id/songCurrentDurationLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textColor="#eeeeee"
+            android:textStyle="bold"/>
+        <!-- Total Duration Label -->
+        <TextView 
+            android:id="@+id/songTotalDurationLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="#04cbde"
+            android:textStyle="bold"/>
+    </LinearLayout>
+    
+    
+   	<LinearLayout
+   	    android:id="@+id/ABLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/timerDisplay"
+        android:orientation="horizontal" >
+        <Button
+            android:id="@+id/btnA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="A" />
+
+       <Space
+        android:layout_width="2dp"
+        android:layout_height="fill_parent"/>
+        
+	   	<de.sgrad.yamahathreditor.RangeSeekBar
+		   android:id="@+id/sbLoop"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           rsb:absoluteMaxValue="100"
+           rsb:absoluteMinValue="0"
+           android:layout_weight="0.6"
+           rsb:singleThumb="false" />
+	   	
+        <Space
+        android:layout_width="2dp"
+        android:layout_height="fill_parent"/>	   	
+	   	
+        <Button
+            android:id="@+id/btnB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="B" />	   	
+    </LinearLayout>	  
+    
+   	<LinearLayout
+   	    android:id="@+id/PatchABLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ABLayout"
+        android:orientation="horizontal" >
+        <Button
+            android:id="@+id/btnPatchA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patch 1" />
+
+        <EditText
+            android:id="@+id/editPatch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:text="00:00"
+	        android:imeOptions="actionDone"
+	        android:singleLine="true"
+	        android:lines="1"
+            android:inputType="time" >
+        </EditText>
+        <TextView
+	        android:id="@+id/textViewPatch1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text=" sec" />
+
+       <Space
+        android:layout_width="2dp"
+        android:layout_height="fill_parent"/>
+	   	
+        <Button
+            android:id="@+id/btnPatchB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patch 2" />	 
+            
+        <EditText
+            android:id="@+id/editPatch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:text="00:00"
+	        android:imeOptions="actionDone"
+	        android:singleLine="true"
+	        android:lines="1"
+            android:inputType="time" >
+        </EditText>
+        
+        <TextView
+	        android:id="@+id/textViewPatch2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text=" sec" /> 
+        
+        	
+    </LinearLayout>	  
+   	
+
+    
+</RelativeLayout>

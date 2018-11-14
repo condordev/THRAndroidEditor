@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="KnobView">
+    <attr name="value" format="float" />
+    <attr name="min" format="float" />
+    <attr name="max" format="float" />
+    <attr name="label" format="string" />
+    <attr name="numberformat" format="string" />
+    <attr name="additionalText" format="string" />
+    <attr name="horizontal" format="boolean" />
+  </declare-styleable>
+    <declare-styleable name="RangeSeekBar">
+        <attr name="absoluteMinValue" format="integer|float"/>
+        <attr name="absoluteMaxValue" format="integer|float"/>
+        <attr name="singleThumb" format="boolean"/>
+    </declare-styleable> 
+     
+    <declare-styleable name="MarkerSeekBar">
+        <attr name="showMarkerOnTouch" format="boolean" />
+        <attr name="smoothTracking" format="boolean" />
+        <attr name="markerTextAppearance" format="reference" />
+        <attr name="markerTextColor" format="color|reference" />
+        <attr name="markerColor" format="color|reference" />
+        <attr name="markerShadowRadius" format="integer|dimension" />
+        <attr name="markerShadowColor" format="color|reference" />
+        <attr name="markerPopUpWindowSize" format="integer|dimension" />
+        <attr name="markerHorizontalOffset" format="integer|dimension" />
+        <attr name="markerVerticalOffset" format="integer|dimension" />
+    </declare-styleable>
+
+    <style name="Widget.MarkerSeekBar.TextAppearance" parent="android:TextAppearance.Small">
+    </style>    
+</resources>

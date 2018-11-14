@@ -1,0 +1,1526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res/de.sgrad.yamahathreditor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:orientation="vertical">    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnPatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8" 
+            android:text="Load Library" />
+        
+        <ToggleButton
+            android:id="@+id/tbtnLED"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" 
+            android:textOn="LED"
+        	android:textOff="LED"
+            android:text="LED" />
+        
+        <ToggleButton
+            android:id="@+id/tbtnWide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" 
+            android:textOn="Wide"
+        	android:textOff="Wide"
+            android:text="Wide Stereo" />
+        
+        <Button
+            android:id="@+id/btnSysEx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8" 
+            android:text="sx" />
+        
+        <Spinner
+            android:id="@+id/deviceNameSpinner"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center_horizontal"
+            android:spinnerMode="dropdown" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutControls"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <de.sgrad.yamahathreditor.KnobView
+                android:id="@+id/knobGain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <de.sgrad.yamahathreditor.KnobView
+                android:id="@+id/knobMaster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <de.sgrad.yamahathreditor.KnobView
+                android:id="@+id/knobBass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />  
+            <de.sgrad.yamahathreditor.KnobView
+                android:id="@+id/knobMiddle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />   
+           <de.sgrad.yamahathreditor.KnobView
+                android:id="@+id/knobTreble"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />  
+
+        </LinearLayout>
+
+    </LinearLayout>    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnCompressor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Compressor" />
+        
+        <Button
+            android:id="@+id/btnGate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:text="Gate" />          
+        
+        <Button
+            android:id="@+id/btnAmps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:text="Amp" />        
+
+        <Button
+            android:id="@+id/btnCabinets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:text="Cabinet" />
+
+    </LinearLayout>
+    
+        <LinearLayout
+        android:id="@+id/buttonLinearLayout"    
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnModulation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Modulation" />
+
+        <Button
+            android:id="@+id/btnDelay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delay" />
+
+        <Button
+            android:id="@+id/btnReverb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Reverb" /> 
+        <Button
+            android:id="@+id/btnSimulation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Player" />                      
+
+    </LinearLayout>
+
+     <ViewFlipper
+            android:id="@+id/myViewFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:inAnimation="@android:anim/slide_in_left">
+        
+<!-- ****************************MESSAGE VIEW********************************* -->   
+            <LinearLayout
+                android:id="@+id/messagelayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >  
+		        <ListView
+		            android:id="@+id/midiEventListView"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:stackFromBottom="true"
+		            android:transcriptMode="alwaysScroll"
+		            android:layout_marginRight="5dp" >
+		        </ListView>                
+			</LinearLayout>                    
+        
+<!-- ****************************AMP LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/amplayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+                <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent" >    
+				    <Button
+				        android:id="@+id/btnClean"
+				        android:text="Clean"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				    <Button
+				        android:id="@+id/btnCrunch"
+				        android:text="Crunch"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				    <Button
+				        android:id="@+id/btnLead"
+				        android:text="Lead"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				 </LinearLayout>
+			
+				 <LinearLayout
+				     android:layout_width="match_parent"
+				     android:layout_height="match_parent" >
+			
+				    <Button
+				        android:id="@+id/btnBritHi"
+				        android:text="BritHi"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				    <Button
+				        android:id="@+id/btnModern"
+				        android:text="Modern"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	
+				    <Button
+				        android:id="@+id/btnBass"
+				        android:text="Bass"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	 	        
+			 	 </LinearLayout>
+				 <LinearLayout
+				     android:layout_width="match_parent"
+				     android:layout_height="match_parent" >
+				    <Button
+				        android:id="@+id/btnAco"
+				        android:text="Acoustic"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				    <Button
+				        android:id="@+id/btnFlat"
+				        android:text="Flat"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	
+			 	 </LinearLayout> 	
+            </LinearLayout>
+            
+<!-- ****************************DELAY LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/delayLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+				 
+				<LinearLayout
+					    android:layout_width="match_parent"
+					    android:layout_height="wrap_content"
+					    android:orientation="horizontal">      
+					    <Button
+					        android:id="@+id/btnDelayOnOff"
+					        android:text="Off"
+					        android:layout_weight="0.4"
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"/>
+				    </LinearLayout>
+				    
+				    <ScrollView 
+				      android:layout_width="match_parent"
+				      android:layout_height="match_parent">
+				    <LinearLayout
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="vertical" 
+				        android:padding="10dp">
+				
+				        <TextView
+				            android:id="@+id/sbDelayTimeText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textColor="#ffffff"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:text="Time " />
+				        <de.sgrad.yamahathreditor.MarkerSeekBar
+				            android:id="@+id/sbDelayTime"
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000" />
+				        
+				        <TextView
+				            android:id="@+id/sbDelayFeedbackText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textColor="#ffffff"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:text="Feedback " />
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbDelayFeedback"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1"
+				            app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+					
+					     <TextView
+				            android:id="@+id/sbDelayHighCutText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="High Cut " />
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbDelayHighCut"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1"
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+					
+					    
+					    <TextView
+				            android:id="@+id/sbDelayLowCutText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Low Cut " />
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbDelayLowCut"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1"
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+					
+					    
+					    <TextView
+				            android:id="@+id/sbDelayLevelText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Level " />	    
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbDelayLevel"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1"
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+				        
+					 </LinearLayout>
+					 </ScrollView>
+            </LinearLayout>
+            
+<!-- ****************************GATE LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/gateLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+			    <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">      
+				    <Button
+				        android:id="@+id/btnGateOnOff"
+				        android:text="Off"
+				        android:layout_weight="0.4"
+				        android:layout_width="0dp"
+				        android:layout_height="wrap_content"/>
+			    </LinearLayout>
+			    
+			    <ScrollView 
+				      android:layout_width="match_parent"
+				      android:layout_height="match_parent">
+			    <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical" 
+			        android:padding="10dp">
+			
+			        <TextView
+			            android:id="@+id/sbGateThresholdText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textColor="#ffffff"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:text="Threshold " />
+			        <de.sgrad.yamahathreditor.MarkerSeekBar
+			            android:id="@+id/sbGateThreshold"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1" 
+				        app:markerColor="@color/colorAccent"
+			            app:markerPopUpWindowSize="112dp"
+			            app:markerTextColor="#000000"/>			            
+			        
+			        
+			        <TextView
+			            android:id="@+id/sbGateReleaseText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textColor="#ffffff"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:text="Release " />
+				    <de.sgrad.yamahathreditor.MarkerSeekBar
+				        android:id="@+id/sbGateRelease"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1" 
+				        app:markerColor="@color/colorAccent"
+			            app:markerPopUpWindowSize="112dp"
+			            app:markerTextColor="#000000"/>				        
+			        
+				 </LinearLayout>
+				 </ScrollView> 
+            </LinearLayout>
+<!-- ****************************COMPRESSOR LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/compressorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+
+			    <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">      
+				    <Button
+				        android:id="@+id/btnCompressorOnOff"
+				        android:text="Off"
+				        android:layout_weight="0.4"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				     
+				    <Spinner
+				        android:id="@+id/spinnerCompressorType"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:entries="@array/compressor_types"
+			        	android:prompt="@string/comp_prompt"/>
+			    </LinearLayout>
+			    
+			    <ScrollView 
+				      android:layout_width="match_parent"
+				      android:layout_height="match_parent">
+			    <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical" 
+			        android:padding="10dp">
+			
+			        <TextView
+			            android:id="@+id/sbCompStompSustainText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textColor="#ffffff"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:text="Sustain " />
+			        <de.sgrad.yamahathreditor.MarkerSeekBar
+			            android:id="@+id/sbCompStompSustain"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1" 
+						app:markerColor="@color/colorAccent"
+				        app:markerPopUpWindowSize="112dp"
+				        app:markerTextColor="#000000"/>
+			        
+			        
+			        <TextView
+			            android:id="@+id/sbCompStompOutputText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textColor="#ffffff"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:text="Output " />
+				    <de.sgrad.yamahathreditor.MarkerSeekBar
+				        android:id="@+id/sbCompStompOutput"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1" 
+						app:markerColor="@color/colorAccent"
+				        app:markerPopUpWindowSize="112dp"
+				        app:markerTextColor="#000000"/>				        
+				
+				     <TextView
+			            android:id="@+id/sbCompRackOutputText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="#ffffff"
+			            android:text="Output " />
+				    <de.sgrad.yamahathreditor.MarkerSeekBar
+				        android:id="@+id/sbCompRackOutput"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1" 
+						app:markerColor="@color/colorAccent"
+				        app:markerPopUpWindowSize="112dp"
+				        app:markerTextColor="#000000"/>				
+				    
+				    <TextView
+			            android:id="@+id/sbCompRackThresholdText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="#ffffff"
+			            android:text="Treshold " />
+				    <de.sgrad.yamahathreditor.MarkerSeekBar
+				        android:id="@+id/sbCompRackThreshold"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1" 
+						app:markerColor="@color/colorAccent"
+				        app:markerPopUpWindowSize="112dp"
+				        app:markerTextColor="#000000"/>				        
+				
+				    
+				    <TextView
+			            android:id="@+id/sbCompRackAttackText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="#ffffff"
+			            android:text="Attack " />	    
+				    <de.sgrad.yamahathreditor.MarkerSeekBar
+				        android:id="@+id/sbCompRackAttack"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1" 
+						app:markerColor="@color/colorAccent"
+				        app:markerPopUpWindowSize="112dp"
+				        app:markerTextColor="#000000"/>				        
+				    
+				    <TextView
+			            android:id="@+id/sbCompRackReleaseText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="#ffffff"
+			            android:text="Release " />	
+				    <de.sgrad.yamahathreditor.MarkerSeekBar
+				        android:id="@+id/sbCompRackRelease"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+						app:markerColor="@color/colorAccent"
+				        app:markerPopUpWindowSize="112dp"
+				        app:markerTextColor="#000000"/>				        
+				
+				    
+				     <TextView
+			            android:id="@+id/sbCompRackRatioText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="#ffffff"
+			            android:text="Ratio 1:1" />	
+				    <de.sgrad.yamahathreditor.MarkerSeekBar
+				        android:id="@+id/sbCompRackRatio"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+						app:markerColor="@color/colorAccent"
+				        app:markerPopUpWindowSize="112dp"
+				        app:markerTextColor="#000000"/>				        
+				            
+				    <TextView
+			            android:id="@+id/sbCompRackKneeText"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="#ffffff"
+			            android:text="Knee soft" />	
+				    <de.sgrad.yamahathreditor.MarkerSeekBar
+				        android:id="@+id/sbCompRackKnee"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+						app:markerColor="@color/colorAccent"
+				        app:markerPopUpWindowSize="112dp"
+				        app:markerTextColor="#000000"/>				        
+			        
+				 </LinearLayout>
+				 </ScrollView> 			    
+                
+ 			</LinearLayout>		
+ 			
+<!-- ****************************CABINET LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/cabinetLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+			    <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent" >    
+				    <Button
+				        android:id="@+id/btnUS4x12"
+				        android:text="US4x12"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				    <Button
+				        android:id="@+id/btnUS2x12"
+				        android:text="US2x12"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				    <Button
+				        android:id="@+id/btn1x12"
+				        android:text="1x12"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				 </LinearLayout>
+			
+				 <LinearLayout
+				     android:layout_width="match_parent"
+				     android:layout_height="match_parent" >
+			
+				    <Button
+				        android:id="@+id/btnBrit4x12"
+				        android:text="Brit4x12"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				    <Button
+				        android:id="@+id/btnBrit2x12"
+				        android:text="Brit2x12"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	
+				    <Button
+				        android:id="@+id/btn4x10"
+				        android:text="4x10"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	 	        
+			 	 </LinearLayout>
+			 	 	 <LinearLayout
+				     android:layout_width="match_parent"
+				     android:layout_height="match_parent" >
+				    <Button
+				        android:id="@+id/btnNone"
+				        android:text="No Cabinet"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+			 	 </LinearLayout>
+                
+            </LinearLayout>
+            
+<!-- ****************************REVERB LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/reverbLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+			    <LinearLayout
+					    android:layout_width="match_parent"
+					    android:layout_height="wrap_content"
+					    android:orientation="horizontal">      
+					    <Button
+					        android:id="@+id/btnReverbOnOff"
+					        android:text="Off"
+					        android:layout_weight="0.4"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"/>
+					     
+					    <Spinner
+					        android:id="@+id/spinnerReverbType"
+					        android:layout_weight="0.6"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:entries="@array/reverb_types"
+				        	android:prompt="@string/reverb_prompt"/>
+				    </LinearLayout>
+				
+			        <ScrollView 
+				      android:layout_width="match_parent"
+				      android:layout_height="match_parent">
+			    
+				    <LinearLayout
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="vertical" 
+				        android:padding="10dp">
+				
+				        <TextView
+				            android:id="@+id/sbReverbTimeText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textColor="#ffffff"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:text="Time " />
+				        <de.sgrad.yamahathreditor.MarkerSeekBar
+				            android:id="@+id/sbReverbTime"
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+				        
+				        
+				        <TextView
+				            android:id="@+id/sbReverbPreText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textColor="#ffffff"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:text="Pre " />
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbReverbPre"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000" />
+					
+					     <TextView
+				            android:id="@+id/sbReverbLowCutText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Low Cut " />
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbReverbLowCut"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1"
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+					
+					    
+					    <TextView
+				            android:id="@+id/sbReverbHighCutText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="High Cut " />
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbReverbHighCut"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+					
+					    
+					    <TextView
+				            android:id="@+id/sbReverbHighRatioText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="High Ratio " />	    
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbReverbHighRatio"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+					        
+					    
+					    <TextView
+				            android:id="@+id/sbReverbLowRatioText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Low Ratio " />	
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbReverbLowRatio"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1"
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+					
+					    
+					     <TextView
+				            android:id="@+id/sbReverbLevelText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Level " />	
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbReverbLevel"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>
+					            
+					    <TextView
+				            android:id="@+id/sbSpringReverbText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Reverb " />	
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbSpringReverb"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/> 
+					        
+					    <TextView
+				            android:id="@+id/sbSpringReverbFilterText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Filter " />	
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbSpringReverbFilter"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/> 	    
+				        
+					 </LinearLayout>
+					 </ScrollView>
+                
+            </LinearLayout>
+            
+<!-- ****************************PATCH LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/patchLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+			    
+                <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">
+				    
+			       <Button
+				        android:id="@+id/btnDropboxAuth"
+				        android:text="Login"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	                    
+                   <Button
+				        android:id="@+id/btnDropboxDownload"
+				        android:text="Download"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+			       <Button
+				        android:id="@+id/btnDropboxUpload"
+				        android:text="Upload"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	
+                </LinearLayout>
+                
+			    <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">
+			       
+				    <TextView
+				        android:id="@+id/patchName"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:clickable="false"
+				        android:focusable="false"
+				        android:gravity="center_horizontal"
+				        android:longClickable="false"
+				        android:shadowColor="@android:color/black"
+				        android:text="patch name"
+				        android:textAppearance="?android:attr/textAppearanceMedium" />
+			
+			    </LinearLayout>
+			    
+			    <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
+			        android:orientation="vertical" 
+			        android:padding="14dp">
+			    <ListView
+			        android:id="@+id/patchlistview"
+			        android:textSize="24sp"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:divider="#343434"
+			        android:dividerHeight="2dp"
+			        android:listSelector="@drawable/list_selector" />
+			        
+				 </LinearLayout>			    
+                
+            </LinearLayout>  
+            
+            
+<!-- ****************************MODULATION LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/modulationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+                 <LinearLayout
+					    android:layout_width="match_parent"
+					    android:layout_height="wrap_content"
+					    android:orientation="horizontal">      
+					    <Button
+					        android:id="@+id/btnModulationOnOff"
+					        android:text="Off"
+					        android:layout_weight="0.6"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"/>
+					     
+					    <Spinner
+					        android:id="@+id/spinnerModulationType"
+					        android:layout_weight="0.4"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:entries="@array/modulation_types"
+				        	android:prompt="@string/modulation_prompt"/>
+				    </LinearLayout>
+				    
+                    <ScrollView 
+				      android:layout_width="match_parent"
+				      android:layout_height="match_parent">
+				    <LinearLayout
+				        android:layout_width="match_parent"
+				        android:layout_height="match_parent"
+				        android:orientation="vertical" 
+				        android:padding="10dp">
+				
+				        <TextView
+				            android:id="@+id/sbModSpeedText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textColor="#ffffff"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:text="Speed " />
+				        <de.sgrad.yamahathreditor.MarkerSeekBar
+				            android:id="@+id/sbModSpeed"
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>				            
+				        
+				        <TextView
+				            android:id="@+id/sbModDepthText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textColor="#ffffff"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:text="Depth " />
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbModDepth"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>					        
+					
+					     <TextView
+				            android:id="@+id/sbModFeedbackText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Feedback " />
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbModFeedback"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>					        
+					    
+					    <TextView
+				            android:id="@+id/sbModManualText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Manual " />
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbModManual"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>					        
+					    
+					    <TextView
+				            android:id="@+id/sbModFreqText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Frequency " />	    
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbModFreq"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>					        
+					    
+					    <TextView
+				            android:id="@+id/sbModSpreadText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Spread " />	
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbModSpread"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>					        
+					    
+					     <TextView
+				            android:id="@+id/sbModMixText"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_gravity="center_horizontal"
+				            android:textAppearance="?android:attr/textAppearanceSmall"
+				            android:textColor="#ffffff"
+				            android:text="Mix " />	
+					    <de.sgrad.yamahathreditor.MarkerSeekBar
+					        android:id="@+id/sbModMix"
+					        android:layout_width="match_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1" 
+					        app:markerColor="@color/colorAccent"
+				            app:markerPopUpWindowSize="112dp"
+				            app:markerTextColor="#000000"/>					        
+				        
+					 </LinearLayout>
+					 </ScrollView> 
+					 
+            </LinearLayout>    
+            
+<!-- ****************************SIMULATION LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/simulationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+                <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent" >    
+				    <Button
+				        android:id="@+id/btnStartAutomation"
+				        android:text="Start "
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				    <Button
+				        android:id="@+id/btnStopSysExParsing"
+				        android:text="SysEx off"
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				    <Button
+				        android:id="@+id/btnMisc"
+				        android:text="App Ver."
+				        android:layout_weight="1"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+				 </LinearLayout>	
+				 
+                 <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">      
+				    <Spinner
+				        android:id="@+id/spinnerDeviceType"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:entries="@array/device_types"
+			        	android:prompt="@string/device_prompt"/>
+				    
+				    <Spinner
+				        android:id="@+id/spinnerFunction"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:entries="@array/compressor_types"
+			        	android:prompt="@string/comp_prompt"/>
+				    
+				    <Spinner
+				        android:id="@+id/spinnerTimer"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:entries="@array/timerValues"/>
+			    
+			    </LinearLayout>	
+			    
+                <ScrollView 
+				      android:layout_width="match_parent"
+				      android:layout_height="match_parent">
+                <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="vertical">
+				    
+                    <TextView
+			            android:id="@+id/rangeSeekBar1Text"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="#ffffff"
+			            android:text="Function " />	
+				    
+                    <LinearLayout
+				    	android:layout_width="match_parent"
+				    	android:layout_height="wrap_content"
+				    	android:orientation="horizontal"> 
+				    	
+                        <Button
+				        android:id="@+id/btnAssignSeekBar1"
+				        android:text="+"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"/>
+                    
+						<de.sgrad.yamahathreditor.RangeSeekBar
+						    android:id="@+id/rangeSeekBar1"
+		                    android:layout_width="fill_parent"
+		                    android:layout_height="wrap_content"
+		                    
+		                    rsb:absoluteMaxValue="100"
+		                    rsb:absoluteMinValue="0"
+		                    rsb:singleThumb="false" />
+					
+					</LinearLayout>	
+					
+                    <TextView
+			            android:id="@+id/rangeSeekBar2Text"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="#ffffff"
+			            android:text="Function " />						
+					
+                   <LinearLayout
+				    	android:layout_width="match_parent"
+				    	android:layout_height="wrap_content"
+				    	android:orientation="horizontal"> 
+				    	
+                        <Button
+				        android:id="@+id/btnAssignSeekBar2"
+				        android:text="+"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"/>
+                    
+						<de.sgrad.yamahathreditor.RangeSeekBar
+						    android:id="@+id/rangeSeekBar2"
+		                    android:layout_width="fill_parent"
+		                    android:layout_height="wrap_content"
+		                    rsb:absoluteMaxValue="100"
+		                    rsb:absoluteMinValue="0"
+		                    rsb:singleThumb="false" />
+					</LinearLayout>	
+					
+                    <TextView
+			            android:id="@+id/rangeSeekBar3Text"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:layout_gravity="center_horizontal"
+			            android:textAppearance="?android:attr/textAppearanceSmall"
+			            android:textColor="#ffffff"
+			            android:text="Function " />						
+					
+                   <LinearLayout
+				    	android:layout_width="match_parent"
+				    	android:layout_height="wrap_content"
+				    	android:orientation="horizontal"> 
+				    	
+                        <Button
+				        android:id="@+id/btnAssignSeekBar3"
+				        android:text="+"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"/>
+                    
+						<de.sgrad.yamahathreditor.RangeSeekBar
+						    android:id="@+id/rangeSeekBar3"
+		                    android:layout_width="fill_parent"
+		                    android:layout_height="wrap_content"
+		                    rsb:absoluteMaxValue="100"
+		                    rsb:absoluteMinValue="0"
+		                    rsb:singleThumb="false" />
+					</LinearLayout>					
+								    
+			    </LinearLayout>			    
+                </ScrollView> 	            
+					    
+            </LinearLayout> 
+            
+<!-- ****************************PRESET LOAD/SAVE LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/presetLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2a4a4a"
+                android:orientation="vertical" >
+			    
+                <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">
+				    
+			       <Button
+				        android:id="@+id/btnOpen"
+				        android:text="Scan SD"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	                    
+                   <Button
+				        android:id="@+id/btnOpenDropbox"
+				        android:text="Dropbox"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+			       <Button
+				        android:id="@+id/btnSave"
+				        android:text="Save to SD"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	
+                </LinearLayout>
+                
+			    <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">
+			       
+			        <Spinner
+				        android:id="@+id/spinnerPresetFilter"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:entries="@array/presetFilter"/>
+			        
+				    <TextView
+				        android:id="@+id/presetName"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:clickable="false"
+				        android:focusable="false"
+				        android:longClickable="false"
+				        android:shadowColor="@android:color/black"
+				        android:text="name"
+				        android:textAppearance="?android:attr/textAppearanceMedium" />
+			
+			    </LinearLayout>
+			    
+			    <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
+			        android:orientation="vertical" 
+			        android:padding="14dp">
+			    <ListView
+			        android:id="@+id/presetlistview"
+			        android:textSize="18sp"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:divider="#343434"
+			        android:dividerHeight="2dp"
+			        android:listSelector="@drawable/list_selector" />
+			        
+				 </LinearLayout>			    
+            </LinearLayout>  
+<!-- ****************************SYSEX LAYOUT*********************************** -->
+            <LinearLayout
+                android:id="@+id/sysexLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4a4a4a"
+                android:orientation="vertical" >
+			    
+                <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">
+				    
+			       <Button
+				        android:id="@+id/btnSendSysex"
+				        android:text="Tx"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>	                    
+                   <Button
+				        android:id="@+id/btnFirstUp"
+				        android:text="+"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+                   <Button
+				        android:id="@+id/btnFirstDown"
+				        android:text="-"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/> 
+                   <Button
+				        android:id="@+id/btnSecondUp"
+				        android:text="+"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+                   <Button
+				        android:id="@+id/btnSecondDown"
+				        android:text="-"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/> 	
+				   <Button
+				        android:id="@+id/btnThirdUp"
+				        android:text="+"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/>
+                   <Button
+				        android:id="@+id/btnThirdDown"
+				        android:text="-"
+				        android:layout_weight="0.6"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"/> 
+
+                </LinearLayout>
+                
+			    <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">
+			       
+				    <TextView
+				        android:id="@+id/sysexEdit"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:clickable="false"
+				        android:focusable="true"
+				        android:gravity="center_horizontal"
+				        android:longClickable="false"
+				        android:shadowColor="@android:color/black"
+				        android:text="F0 43 7D 10 41 30 01 xx xx xx F7"
+				        android:textAppearance="?android:attr/textAppearanceMedium" />
+			    </LinearLayout>
+			    
+			    <LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:orientation="horizontal">
+				    <EditText
+						 android:layout_width="match_parent"
+						 android:layout_height="wrap_content"
+						 android:id="@+id/inputnumber1"
+						 android:digits="0123456789ABCDEF"
+						 android:inputType="textCapCharacters" />
+				    <EditText
+						 android:layout_width="match_parent"
+						 android:layout_height="wrap_content"
+						 android:id="@+id/inputnumber2"
+						 android:digits="0123456789ABCDEF"
+						 android:inputType="textCapCharacters" />
+				    <EditText
+						 android:layout_width="match_parent"
+						 android:layout_height="wrap_content"
+						 android:id="@+id/inputnumber3"
+						 android:digits="0123456789ABCDEF"
+						 android:inputType="textCapCharacters" />
+				    <CheckBox
+						 android:layout_width="match_parent"
+						 android:layout_height="wrap_content"
+						 android:id="@+id/c1" />
+				    <CheckBox
+						 android:layout_width="match_parent"
+						 android:layout_height="wrap_content"
+						 android:id="@+id/c2" />
+				    <CheckBox
+						 android:layout_width="match_parent"
+						 android:layout_height="wrap_content"
+						 android:id="@+id/c3" />
+				    
+			    </LinearLayout>
+			    
+			    <LinearLayout
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
+			        android:orientation="vertical" 
+			        android:padding="14dp">
+		        <ListView
+		            android:id="@+id/midiEventListView2"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:stackFromBottom="true"
+		            android:transcriptMode="alwaysScroll"
+		            android:layout_marginRight="5dp" >
+		        </ListView>  
+			        
+				 </LinearLayout>			    
+                
+            </LinearLayout>              
+      </ViewFlipper>
+</LinearLayout>
+</FrameLayout>
+

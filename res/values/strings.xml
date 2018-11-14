@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">THREditor</string>
+    <string name="app_name_single">THREditor</string>
+    <string name="app_name_multiple">THREditor</string>
+    <string name="app_name_driver">THREditor</string>
+
+    <string name="comp_prompt">Compressor Type</string>
+    <string name="reverb_prompt">Reverb Type</string>
+    <string name="modulation_prompt">Modulation Type</string>
+    
+    <string-array name="compressor_types">
+        <item>Stomp</item>
+        <item>Rack</item>
+    </string-array>
+    
+    <string-array name="reverb_types">
+        <item>Room</item>
+        <item>Plate</item>
+        <item>Hall</item>
+        <item>Spring</item>
+    </string-array>
+    
+    <string-array name="modulation_types">
+        <item>Chorus</item>
+        <item>Flanger</item>
+        <item>Tremolo</item>
+        <item>Phaser</item>
+    </string-array>
+    
+    <string name="device_prompt">Choose a device</string>
+    <string-array name="device_types">
+        <item>Controls</item>
+        <item>Reverb</item>
+        <item>Modulation</item>
+        <item>Compressor</item>
+        <item>Delay</item>
+        <item>Gate</item>
+        <item>Cabinets</item>
+    </string-array>
+    
+    <string name="control_function_prompt">Choose a control</string>
+    <string-array name="control_functions">
+        <item>Gain</item>
+        <item>Master</item>
+        <item>Bass</item>
+        <item>Middle</item>
+        <item>Treble</item>
+    </string-array>
+    
+    <string name="delay_function_prompt">Choose a delay parameter</string>
+    <string-array name="delayl_functions">
+        <item>Time</item>
+        <item>Feedback</item>
+        <item>HighCut</item>
+        <item>LowCut</item>
+        <item>Level</item>
+    </string-array>
+	
+	<string name="demo_min_label">Min</string>
+    <string name="demo_max_label">Max</string>
+
+</resources>
